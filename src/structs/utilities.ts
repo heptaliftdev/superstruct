@@ -1,6 +1,9 @@
 import { Struct, Context, Validator } from '../struct'
 import { object, optional, type } from './types'
 import { ObjectSchema, Assign, ObjectType, PartialObjectSchema } from '../utils'
+import { define } from '../structs/define'
+
+export { define } from '../structs/define'
 
 /**
  * Create a new struct that combines the properties properties from multiple
@@ -57,14 +60,6 @@ export function assign(...Structs: Struct<any>[]): any {
   const schemas = Structs.map((s) => s.schema)
   const schema = Object.assign({}, ...schemas)
   return isType ? type(schema) : object(schema)
-}
-
-/**
- * Define a new struct type with a custom validation function.
- */
-
-export function define<T>(name: string, validator: Validator): Struct<T, null> {
-  return new Struct({ type: name, schema: null, validator })
 }
 
 /**

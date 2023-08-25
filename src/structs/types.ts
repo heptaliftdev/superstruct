@@ -1,5 +1,5 @@
 import { Infer, Struct } from '../struct'
-import { define } from './utilities'
+import { define } from '../structs/define'
 import {
   ObjectSchema,
   ObjectType,

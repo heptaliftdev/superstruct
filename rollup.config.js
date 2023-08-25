@@ -6,14 +6,15 @@ export default defineConfig({
   plugins: [typescript()],
   output: [
     {
-      file: './dist/index.mjs',
+      file: './dist/index.esm.js',
       format: 'esm',
       sourcemap: true,
+      assetFileNames: '[name].esm.js',
     },
     {
-      file: './dist/index.cjs',
+      file: './dist/index.js',
       format: 'umd',
-      name: 'Superstruct',
+      name: 'Autolang',
       sourcemap: true,
     },
   ],
