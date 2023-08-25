@@ -1,5 +1,5 @@
 {
-  "name": "@haiyami/superstruct",
+  "name": "superstruct",
   "description": "A simple and composable way to validate data in JavaScript (and TypeScript).",
   "version": "1.0.3",
   "license": "MIT",
@@ -7,6 +7,7 @@
   "main": "./dist/index.js",
   "module": "./dist/index.esm.js",
   "types": "./dist/index.d.ts",
+  "private": false,
   "sideEffects": false,
   "files": [
     "dist"
