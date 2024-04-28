@@ -139,4 +139,5 @@ export declare function union<A extends AnyStruct, B extends AnyStruct[]>(Struct
  * Ensure that any value passes validation, without widening its type to `any`.
  */
 export declare function unknown(): Struct<unknown, null>;
+export declare function defineType<Type extends Struct<any>>(name: string, schemaType: Type, metadata?: Record<string, any>): Type;
 //# sourceMappingURL=types.d.ts.map

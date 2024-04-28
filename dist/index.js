@@ -693,6 +693,12 @@
     function unknown() {
         return define('unknown', () => true);
     }
+    function defineType(name, schemaType, metadata) {
+        return Object.assign(schemaType, {
+            name,
+            metadata,
+        });
+    }
 
     /**
      * Augment a `Struct` to add an additional coercion step to its input.
@@ -1010,6 +1016,7 @@
     exports.date = date;
     exports.defaulted = defaulted;
     exports.define = define;
+    exports.defineType = defineType;
     exports.deprecated = deprecated;
     exports.dynamic = dynamic;
     exports.empty = empty;

@@ -544,3 +544,14 @@ export function union<A extends AnyStruct, B extends AnyStruct[]>(
 export function unknown(): Struct<unknown, null> {
   return define('unknown', () => true)
 }
+
+export function defineType<Type extends Struct<any>>(
+  name: string,
+  schemaType: Type,
+  metadata?: Record<string, any>
+): Type {
+  return Object.assign(schemaType, {
+    name,
+    metadata,
+  })
+}

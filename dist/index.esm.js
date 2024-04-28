@@ -687,6 +687,12 @@ function union(Structs) {
 function unknown() {
     return define('unknown', () => true);
 }
+function defineType(name, schemaType, metadata) {
+    return Object.assign(schemaType, {
+        name,
+        metadata,
+    });
+}
 
 /**
  * Augment a `Struct` to add an additional coercion step to its input.
@@ -991,5 +997,5 @@ function struct(name, validator) {
     return define(name, validator);
 }
 
-export { Struct, StructError, any, array, assert, assign, bigint, boolean, coerce, create, date, defaulted, define, deprecated, dynamic, empty, enums, func, instance, integer, intersection, is, lazy, literal, map, mask, max, min, never, nonempty, nullable, number, object, omit, optional, partial, pattern, pick, record, refine, regexp, set, size, string, struct, trimmed, tuple, type, union, unknown, validate };
+export { Struct, StructError, any, array, assert, assign, bigint, boolean, coerce, create, date, defaulted, define, defineType, deprecated, dynamic, empty, enums, func, instance, integer, intersection, is, lazy, literal, map, mask, max, min, never, nonempty, nullable, number, object, omit, optional, partial, pattern, pick, record, refine, regexp, set, size, string, struct, trimmed, tuple, type, union, unknown, validate };
 //# sourceMappingURL=index.esm.js.map
