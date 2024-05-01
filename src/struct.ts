@@ -18,6 +18,8 @@ export class Struct<T = unknown, S = unknown> {
     value: unknown,
     context: Context
   ) => Iterable<[string | number, unknown, Struct<any> | Struct<never>]>
+  name?: string
+  metadata?: Record<string, any>
 
   constructor(props: {
     type: string

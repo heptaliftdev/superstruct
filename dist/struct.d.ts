@@ -13,6 +13,8 @@ export declare class Struct<T = unknown, S = unknown> {
     validator: (value: unknown, context: Context) => Iterable<Failure>;
     refiner: (value: T, context: Context) => Iterable<Failure>;
     entries: (value: unknown, context: Context) => Iterable<[string | number, unknown, Struct<any> | Struct<never>]>;
+    name?: string;
+    metadata?: Record<string, any>;
     constructor(props: {
         type: string;
         schema: S;
