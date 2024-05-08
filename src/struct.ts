@@ -20,6 +20,7 @@ export class Struct<T = unknown, S = unknown> {
   ) => Iterable<[string | number, unknown, Struct<any> | Struct<never>]>
   name?: string
   metadata?: Record<string, any>
+  isOptional?: boolean
 
   constructor(props: {
     type: string
@@ -28,6 +29,7 @@ export class Struct<T = unknown, S = unknown> {
     validator?: Validator
     refiner?: Refiner<T>
     entries?: Struct<T, S>['entries']
+    isOptional?: boolean
   }) {
     const {
       type,
@@ -36,12 +38,14 @@ export class Struct<T = unknown, S = unknown> {
       refiner,
       coercer = (value: unknown) => value,
       entries = function* () {},
+      isOptional,
     } = props
 
     this.type = type
     this.schema = schema
     this.entries = entries
     this.coercer = coercer
+    this.isOptional = isOptional
 
     if (validator) {
       this.validator = (value, context) => {

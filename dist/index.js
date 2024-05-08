@@ -189,11 +189,12 @@
      */
     class Struct {
         constructor(props) {
-            const { type, schema, validator, refiner, coercer = (value) => value, entries = function* () { }, } = props;
+            const { type, schema, validator, refiner, coercer = (value) => value, entries = function* () { }, isOptional, } = props;
             this.type = type;
             this.schema = schema;
             this.entries = entries;
             this.coercer = coercer;
+            this.isOptional = isOptional;
             if (validator) {
                 this.validator = (value, context) => {
                     const result = validator(value, context);
@@ -532,6 +533,7 @@
             ...struct,
             validator: (value, ctx) => value === undefined || struct.validator(value, ctx),
             refiner: (value, ctx) => value === undefined || struct.refiner(value, ctx),
+            isOptional: true,
         });
     }
     /**

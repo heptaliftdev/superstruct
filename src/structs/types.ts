@@ -335,6 +335,7 @@ export function optional<T, S>(struct: Struct<T, S>): Struct<T | undefined, S> {
     validator: (value, ctx) =>
       value === undefined || struct.validator(value, ctx),
     refiner: (value, ctx) => value === undefined || struct.refiner(value, ctx),
+    isOptional: true,
   })
 }
 

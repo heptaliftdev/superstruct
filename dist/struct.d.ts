@@ -15,6 +15,7 @@ export declare class Struct<T = unknown, S = unknown> {
     entries: (value: unknown, context: Context) => Iterable<[string | number, unknown, Struct<any> | Struct<never>]>;
     name?: string;
     metadata?: Record<string, any>;
+    isOptional?: boolean;
     constructor(props: {
         type: string;
         schema: S;
@@ -22,6 +23,7 @@ export declare class Struct<T = unknown, S = unknown> {
         validator?: Validator;
         refiner?: Refiner<T>;
         entries?: Struct<T, S>['entries'];
+        isOptional?: boolean;
     });
     /**
      * Assert that a value passes the struct's validation, throwing if it doesn't.
