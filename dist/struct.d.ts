@@ -24,6 +24,7 @@ export declare class Struct<T = unknown, S = unknown> {
         refiner?: Refiner<T>;
         entries?: Struct<T, S>['entries'];
         isOptional?: boolean;
+        name?: string;
     });
     /**
      * Assert that a value passes the struct's validation, throwing if it doesn't.

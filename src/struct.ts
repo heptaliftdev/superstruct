@@ -30,6 +30,7 @@ export class Struct<T = unknown, S = unknown> {
     refiner?: Refiner<T>
     entries?: Struct<T, S>['entries']
     isOptional?: boolean
+    name?: string
   }) {
     const {
       type,
@@ -39,6 +40,7 @@ export class Struct<T = unknown, S = unknown> {
       coercer = (value: unknown) => value,
       entries = function* () {},
       isOptional,
+      name,
     } = props
 
     this.type = type
@@ -46,6 +48,7 @@ export class Struct<T = unknown, S = unknown> {
     this.entries = entries
     this.coercer = coercer
     this.isOptional = isOptional
+    this.name = name
 
     if (validator) {
       this.validator = (value, context) => {
