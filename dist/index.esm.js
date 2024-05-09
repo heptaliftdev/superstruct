@@ -183,12 +183,13 @@ function* run(value, struct, options = {}) {
  */
 class Struct {
     constructor(props) {
-        const { type, schema, validator, refiner, coercer = (value) => value, entries = function* () { }, isOptional, } = props;
+        const { type, schema, validator, refiner, coercer = (value) => value, entries = function* () { }, isOptional, name, } = props;
         this.type = type;
         this.schema = schema;
         this.entries = entries;
         this.coercer = coercer;
         this.isOptional = isOptional;
+        this.name = name;
         if (validator) {
             this.validator = (value, context) => {
                 const result = validator(value, context);
