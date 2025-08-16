@@ -1,20 +1,13 @@
-import {
-  assert,
-  boolean,
-  type Infer,
-  object,
-  optional,
-  string,
-} from "@haiyami/hyperstruct";
+import * as h from "@haiyami/hyperstruct";
 
 // Define a struct to validate with.
-const User = object({
-  name: string(),
-  email: string(),
-  is_admin: optional(boolean()),
+const User = h.object({
+  name: h.string(),
+  email: h.string(),
+  is_admin: h.optional(h.boolean()),
 });
 
-type UserType = Infer<typeof User>;
+type UserType = h.Infer<typeof User>;
 
 // Define data to be validated.
 const data: unknown = {
@@ -23,4 +16,4 @@ const data: unknown = {
 };
 
 // Validate the data. In this case `is_admin` is optional, so it won't throw.
-assert(data, User);
+h.assert(data, User);

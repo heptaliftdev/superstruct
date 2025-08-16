@@ -1,13 +1,13 @@
-import { type Infer, is, number, object, string } from "@haiyami/hyperstruct";
+import * as h from "@haiyami/hyperstruct";
 
 // Define a struct to validate with.
-const User = object({
-  id: number(),
-  name: string(),
-  email: string(),
+const User = h.object({
+  id: h.number(),
+  name: h.string(),
+  email: h.string(),
 });
 
-type UserType = Infer<typeof User>;
+type UserType = h.Infer<typeof User>;
 
 // Define data to be validated.
 const data: unknown = {
@@ -17,7 +17,7 @@ const data: unknown = {
 };
 
 // Test that the data is valid with the `is` helper.
-if (is(data, User)) {
+if (h.is(data, User)) {
   doSomethingWith(data);
 
   // If you're using TypeScript, the compiler will automatically know that

@@ -1,30 +1,23 @@
-import {
-  assert,
-  date,
-  type Infer,
-  number,
-  object,
-  string,
-} from "@haiyami/hyperstruct";
+import * as h from "@haiyami/hyperstruct";
 
 // Define a `User` struct.
-const User = object({
-  id: number(),
-  name: string(),
+const User = h.object({
+  id: h.number(),
+  name: h.string(),
 });
 
-type UserType = Infer<typeof User>;
+type UserType = h.Infer<typeof User>;
 
 // Define an `Article` struct, composing the `User` struct in the article's
 // `author` property.
-const Article = object({
-  id: number(),
-  title: string(),
-  published_at: date(),
+const Article = h.object({
+  id: h.number(),
+  title: h.string(),
+  published_at: h.date(),
   author: User,
 });
 
-type ArticleType = Infer<typeof Article>;
+type ArticleType = h.Infer<typeof Article>;
 
 // Define data to be validated.
 const data: unknown = {
@@ -38,4 +31,4 @@ const data: unknown = {
 };
 
 // Validate the data. In this case, the data is valid, so it won't throw.
-assert(data, Article);
+h.assert(data, Article);

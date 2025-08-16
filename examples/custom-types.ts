@@ -1,25 +1,18 @@
-import {
-  assert,
-  define,
-  type Infer,
-  object,
-  optional,
-  string,
-} from "@haiyami/hyperstruct";
+import * as h from "@haiyami/hyperstruct";
 import isEmail from "is-email";
 import isUrl from "is-url";
 import isUuid from "is-uuid";
 
 // Define custom structs with validation functions.
-const Uuid = define("Uuid", (value: unknown): value is string => {
+const Uuid = h.define("Uuid", (value: unknown): value is string => {
   return typeof value === "string" && isUuid.v4(value);
 });
 
-const Url = define("Url", (value: unknown): value is string => {
+const Url = h.define("Url", (value: unknown): value is string => {
   return typeof value === "string" && isUrl(value) && value.length < 2048;
 });
 
-const Email = define("Email", (value: unknown) => {
+const Email = h.define("Email", (value: unknown) => {
   if (typeof value !== "string") {
     return { code: "not_string" };
   }
@@ -33,15 +26,15 @@ const Email = define("Email", (value: unknown) => {
 });
 
 // Define a struct to validate with.
-const User = object({
+const User = h.object({
   id: Uuid,
-  name: string(),
+  name: h.string(),
   email: Email,
-  website: optional(Url),
+  website: h.optional(Url),
 });
 
 // TypeScript type inference
-type UserType = Infer<typeof User>;
+type UserType = h.Infer<typeof User>;
 
 // Define data to be validated.
 const data: unknown = {
@@ -52,4 +45,4 @@ const data: unknown = {
 };
 
 // Validate the data. In this case the data is valid, so it won't throw.
-assert(data, User);
+h.assert(data, User);

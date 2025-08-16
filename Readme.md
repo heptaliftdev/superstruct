@@ -41,14 +41,14 @@ But Hyperstruct is designed for validating data at runtime, so it throws (or ret
 Hyperstruct allows you to define the shape of data you want to validate:
 
 ```js
-import { assert, object, number, string, array } from '@haiyami/hyperstruct'
+import * as h from '@haiyami/hyperstruct'
 
-const Article = object({
-  id: number(),
-  title: string(),
-  tags: array(string()),
-  author: object({
-    id: number(),
+const Article = h.object({
+  id: h.number(),
+  title: h.string(),
+  tags: h.array(h.string()),
+  author: h.object({
+    id: h.number(),
   }),
 })
 
@@ -61,7 +61,7 @@ const data = {
   },
 }
 
-assert(data, Article)
+h.assert(data, Article)
 // This will throw an error when the data is invalid.
 // If you'd rather not throw, you can use `is()` or `validate()`.
 ```
@@ -69,17 +69,17 @@ assert(data, Article)
 Hyperstruct ships with validators for all the common JavaScript data types, and you can define custom ones too:
 
 ```js
-import { is, define, object, string } from '@haiyami/hyperstruct'
+import * as h from '@haiyami/hyperstruct'
 import isUuid from 'is-uuid'
 import isEmail from 'is-email'
 
-const Email = define('Email', isEmail)
-const Uuid = define('Uuid', isUuid.v4)
+const Email = h.define('Email', isEmail)
+const Uuid = h.define('Uuid', isUuid.v4)
 
-const User = object({
+const User = h.object({
   id: Uuid,
   email: Email,
-  name: string(),
+  name: h.string(),
 })
 
 const data = {
@@ -88,7 +88,7 @@ const data = {
   name: 'Jane',
 }
 
-if (is(data, User)) {
+if (h.is(data, User)) {
   // Your data is guaranteed to be valid in this block.
 }
 ```
@@ -96,13 +96,13 @@ if (is(data, User)) {
 Hyperstruct can also handle coercion of your data before validating it, for example to mix in default values:
 
 ```ts
-import { create, object, number, string, defaulted } from '@haiyami/hyperstruct'
+import * as h from '@haiyami/hyperstruct'
 
 let i = 0
 
-const User = object({
-  id: defaulted(number(), () => i++),
-  name: string(),
+const User = h.object({
+  id: h.defaulted(h.number(), () => i++),
+  name: h.string(),
 })
 
 const data = {
@@ -110,7 +110,7 @@ const data = {
 }
 
 // You can apply the defaults to your data while validating.
-const user = create(data, User)
+const user = h.create(data, User)
 // {
 //   id: 0,
 //   name: 'Jane',
@@ -120,16 +120,16 @@ const user = create(data, User)
 And if you use TypeScript, Hyperstruct automatically ensures that your data has proper typings whenever you validate it:
 
 ```ts
-import { is, object, number, string } from '@haiyami/hyperstruct'
+import * as h from '@haiyami/hyperstruct'
 
-const User = object({
-  id: number(),
-  name: string()
+const User = h.object({
+  id: h.number(),
+  name: h.string()
 })
 
 const data: unknown = { ... }
 
-if (is(data, User)) {
+if (h.is(data, User)) {
   // TypeScript knows the shape of `data` here, so it is safe to access
   // properties like `data.id` and `data.name`.
 }

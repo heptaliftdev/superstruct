@@ -1,26 +1,17 @@
-import {
-  array,
-  assert,
-  boolean,
-  type Infer,
-  number,
-  object,
-  optional,
-  string,
-} from "@haiyami/hyperstruct";
+import * as h from "@haiyami/hyperstruct";
 
 // Define a struct to validate with.
-const User = object({
-  id: number(),
-  name: string(),
-  email: string(),
-  age: number(),
-  departments: array(string()),
-  is_admin: optional(boolean()),
+const User = h.object({
+  id: h.number(),
+  name: h.string(),
+  email: h.string(),
+  age: h.number(),
+  departments: h.array(h.string()),
+  is_admin: h.optional(h.boolean()),
 });
 
 // TypeScript type inference
-type UserType = Infer<typeof User>;
+type UserType = h.Infer<typeof User>;
 
 // Define data to be validated.
 const data: unknown = {
@@ -32,4 +23,4 @@ const data: unknown = {
 };
 
 // Validate the data. In this case, the data is valid, so it won't throw.
-assert(data, User);
+h.assert(data, User);
