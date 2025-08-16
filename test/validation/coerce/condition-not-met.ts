@@ -1,17 +1,17 @@
-import { string, number, coerce } from '../../../src'
+import { coerce, number, string } from "../../../src";
 
-export const Struct = coerce(string(), number(), (x) => 'known')
+export const Struct = coerce(string(), number(), (_x) => "known");
 
-export const data = false
+export const data = false;
 
 export const failures = [
   {
     value: false,
-    type: 'string',
+    type: "string",
     refinement: undefined,
     path: [],
     branch: [data],
   },
-]
+];
 
-export const create = true
+export const create = true;

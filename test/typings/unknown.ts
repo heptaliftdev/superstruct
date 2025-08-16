@@ -1,7 +1,7 @@
-import { assert, unknown } from '../../src'
-import { test } from '..'
+import { assert, unknown } from "../../src";
+import { test } from "..";
 
 test<unknown>((x) => {
-  assert(x, unknown())
-  return x
-})
+  assert(x, unknown());
+  return x;
+});

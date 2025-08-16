@@ -1,14 +1,14 @@
-import { type, union, string, number } from '../../../src'
+import { number, string, type, union } from "../../../src";
 
-const A = type({ a: string() })
-const B = type({ b: number() })
+const A = type({ a: string() });
+const B = type({ b: number() });
 
-export const Struct = union([A, B])
+export const Struct = union([A, B]);
 
 export const data = {
-  a: 'a',
-}
+  a: "a",
+};
 
 export const output = {
-  a: 'a',
-}
+  a: "a",
+};

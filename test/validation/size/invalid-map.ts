@@ -1,15 +1,15 @@
-import { map, size, number, string } from '../../../src'
+import { map, number, size, string } from "../../../src";
 
-export const Struct = size(map(number(), string()), 1, 5)
+export const Struct = size(map(number(), string()), 1, 5);
 
-export const data = new Map()
+export const data = new Map();
 
 export const failures = [
   {
     value: data,
-    type: 'map',
-    refinement: 'size',
+    type: "map",
+    refinement: "size",
     path: [],
     branch: [data],
   },
-]
+];

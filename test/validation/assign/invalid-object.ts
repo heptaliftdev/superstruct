@@ -1,29 +1,29 @@
-import { object, assign, string, number } from '../../../src'
+import { assign, number, object, string } from "../../../src";
 
-const A = object({ a: string() })
-const B = object({ a: number(), b: number() })
+const A = object({ a: string() });
+const B = object({ a: number(), b: number() });
 
-export const Struct = assign(A, B)
+export const Struct = assign(A, B);
 
 export const data = {
-  a: 'invalid',
+  a: "invalid",
   b: 2,
   c: 5,
-}
+};
 
 export const failures = [
   {
-    value: 'invalid',
-    type: 'number',
+    value: "invalid",
+    type: "number",
     refinement: undefined,
-    path: ['a'],
+    path: ["a"],
     branch: [data, data.a],
   },
   {
     branch: [data, data.c],
-    path: ['c'],
+    path: ["c"],
     refinement: undefined,
-    type: 'never',
+    type: "never",
     value: 5,
   },
-]
+];

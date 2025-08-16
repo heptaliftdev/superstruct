@@ -1,4 +1,4 @@
-import { object, string } from '../../../src'
+import { object, string } from "../../../src";
 
 export const Struct = object({
   name: string(),
@@ -6,20 +6,20 @@ export const Struct = object({
     street: string(),
     city: string(),
   }),
-})
+});
 
 export const data = {
-  name: 'john',
+  name: "john",
   address: {
-    street: '123 Fake St',
-    city: 'Springfield',
+    street: "123 Fake St",
+    city: "Springfield",
   },
-}
+};
 
 export const output = {
-  name: 'john',
+  name: "john",
   address: {
-    street: '123 Fake St',
-    city: 'Springfield',
+    street: "123 Fake St",
+    city: "Springfield",
   },
-}
+};

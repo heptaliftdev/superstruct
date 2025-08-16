@@ -1,4 +1,4 @@
-import { pick, object, string } from '../../../src'
+import { object, pick, string } from "../../../src";
 
 export const Struct = pick(
   object({
@@ -8,22 +8,22 @@ export const Struct = pick(
       city: string(),
     }),
   }),
-  ['address']
-)
+  ["address"]
+);
 
 export const data = {
   address: {
     street: 123,
-    city: 'Springfield',
+    city: "Springfield",
   },
-}
+};
 
 export const failures = [
   {
     value: 123,
-    type: 'string',
+    type: "string",
     refinement: undefined,
-    path: ['address', 'street'],
+    path: ["address", "street"],
     branch: [data, data.address, data.address.street],
   },
-]
+];

@@ -1,19 +1,19 @@
-import { deprecated, number, object } from '../../../src'
+import { deprecated, number, object } from "../../../src";
 
 export const Struct = object({
   deprecatedKey: deprecated(number(), () => {}),
-})
+});
 
 export const data = {
-  deprecatedKey: '42',
-}
+  deprecatedKey: "42",
+};
 
 export const failures = [
   {
-    value: '42',
-    type: 'number',
+    value: "42",
+    type: "number",
     refinement: undefined,
-    path: ['deprecatedKey'],
+    path: ["deprecatedKey"],
     branch: [data, data.deprecatedKey],
   },
-]
+];

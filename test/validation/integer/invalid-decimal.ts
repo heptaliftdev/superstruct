@@ -1,15 +1,15 @@
-import { integer } from '../../../src'
+import { integer } from "../../../src";
 
-export const Struct = integer()
+export const Struct = integer();
 
-export const data = 3.14
+export const data = 3.14;
 
 export const failures = [
   {
     value: 3.14,
-    type: 'integer',
+    type: "integer",
     refinement: undefined,
     path: [],
     branch: [data],
   },
-]
+];

@@ -1,14 +1,14 @@
-import { assert, optional, string, number, object, enums } from '../../src'
-import { test } from '..'
+import { assert, enums, number, object, optional, string } from "../../src";
+import { test } from "..";
 
 test<string | undefined>((x) => {
-  assert(x, optional(string()))
-  return x
-})
+  assert(x, optional(string()));
+  return x;
+});
 
 test<{
-  a?: number | undefined
-  b: string
+  a?: number | undefined;
+  b: string;
 }>((x) => {
   assert(
     x,
@@ -16,13 +16,13 @@ test<{
       a: optional(number()),
       b: string(),
     })
-  )
-  return x
-})
+  );
+  return x;
+});
 
 test<{
-  a: 'a'
-  b: 'b'
+  a: "a";
+  b: "b";
 }>(() => {
-  return optional(enums(['a', 'b'])).schema
-})
+  return optional(enums(["a", "b"])).schema;
+});

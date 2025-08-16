@@ -1,15 +1,15 @@
-import { set, empty, number } from '../../../src'
+import { empty, number, set } from "../../../src";
 
-export const Struct = empty(set(number()))
+export const Struct = empty(set(number()));
 
-export const data = new Set([1, 2, 3])
+export const data = new Set([1, 2, 3]);
 
 export const failures = [
   {
     value: data,
-    type: 'set',
-    refinement: 'empty',
+    type: "set",
+    refinement: "empty",
     path: [],
     branch: [data],
   },
-]
+];

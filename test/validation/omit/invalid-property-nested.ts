@@ -1,4 +1,4 @@
-import { omit, object, string } from '../../../src'
+import { object, omit, string } from "../../../src";
 
 export const Struct = omit(
   object({
@@ -8,22 +8,22 @@ export const Struct = omit(
       city: string(),
     }),
   }),
-  ['name']
-)
+  ["name"]
+);
 
 export const data = {
   address: {
     street: 123,
-    city: 'Springfield',
+    city: "Springfield",
   },
-}
+};
 
 export const failures = [
   {
     value: 123,
-    type: 'string',
+    type: "string",
     refinement: undefined,
-    path: ['address', 'street'],
+    path: ["address", "street"],
     branch: [data, data.address, data.address.street],
   },
-]
+];

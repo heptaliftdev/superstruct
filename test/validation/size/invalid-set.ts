@@ -1,15 +1,15 @@
-import { set, size, number } from '../../../src'
+import { number, set, size } from "../../../src";
 
-export const Struct = size(set(number()), 1, 5)
+export const Struct = size(set(number()), 1, 5);
 
-export const data = new Set()
+export const data = new Set();
 
 export const failures = [
   {
     value: data,
-    type: 'set',
-    refinement: 'size',
+    type: "set",
+    refinement: "size",
     path: [],
     branch: [data],
   },
-]
+];

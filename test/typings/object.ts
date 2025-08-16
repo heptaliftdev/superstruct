@@ -1,15 +1,15 @@
-import { assert, object, number, string } from '../../src'
-import { test } from '..'
+import { assert, number, object, string } from "../../src";
+import { test } from "..";
 
 test<Record<string, unknown>>((x) => {
-  assert(x, object())
-  return x
-})
+  assert(x, object());
+  return x;
+});
 
 test<{
-  a: number
-  b: string
+  a: number;
+  b: string;
 }>((x) => {
-  assert(x, object({ a: number(), b: string() }))
-  return x
-})
+  assert(x, object({ a: number(), b: string() }));
+  return x;
+});

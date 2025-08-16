@@ -3,13 +3,14 @@ import {
   create,
   date,
   defaulted,
+  type Infer,
   number,
   object,
   string,
-} from 'superstruct'
+} from "@haiyami/hyperstruct";
 
 // Define an auto-incrementing unique id.
-let uid = 1
+let uid: number = 1;
 
 // Define a struct, with properties with default values.
 const User = object({
@@ -18,16 +19,19 @@ const User = object({
   email: string(),
   is_admin: defaulted(boolean(), false),
   created_at: defaulted(date(), () => new Date()),
-})
+});
+
+// TypeScript type inference
+type UserType = Infer<typeof User>;
 
 // Define data to be validated.
-const data = {
-  name: 'Jane Smith',
-  email: 'jane@example.com',
-}
+const data: unknown = {
+  name: "Jane Smith",
+  email: "jane@example.com",
+};
 
 // Coerce the data during validation, using the struct's default values.
-const user = create(data, User)
+const user: UserType = create(data, User);
 // {
 //   id: 1,
 //   name: 'Jane Smith',

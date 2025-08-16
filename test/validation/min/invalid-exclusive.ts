@@ -1,15 +1,15 @@
-import { number, min } from '../../../src'
+import { min, number } from "../../../src";
 
-export const Struct = min(number(), 0, { exclusive: true })
+export const Struct = min(number(), 0, { exclusive: true });
 
-export const data = 0
+export const data = 0;
 
 export const failures = [
   {
     value: 0,
-    type: 'number',
-    refinement: 'min',
+    type: "number",
+    refinement: "min",
     path: [],
     branch: [data],
   },
-]
+];

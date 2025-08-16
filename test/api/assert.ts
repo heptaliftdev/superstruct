@@ -1,37 +1,37 @@
-import { throws, doesNotThrow } from 'assert'
-import { assert, string, StructError } from '../../src'
+import { doesNotThrow, throws } from "assert";
+import { assert, StructError, string } from "../../src";
 
-describe('assert', () => {
-  it('valid as helper', () => {
+describe("assert", () => {
+  it("valid as helper", () => {
     doesNotThrow(() => {
-      assert('valid', string())
-    })
-  })
+      assert("valid", string());
+    });
+  });
 
-  it('valid as method', () => {
+  it("valid as method", () => {
     doesNotThrow(() => {
-      // @ts-ignore
-      string().assert('valid')
-    })
-  })
+      // @ts-expect-error
+      string().assert("valid");
+    });
+  });
 
-  it('invalid as helper', () => {
+  it("invalid as helper", () => {
     throws(() => {
-      assert(42, string())
-    }, StructError)
-  })
+      assert(42, string());
+    }, StructError);
+  });
 
-  it('invalid as method', () => {
+  it("invalid as method", () => {
     throws(() => {
-      // @ts-ignore
-      string().assert(42)
-    }, StructError)
-  })
+      // @ts-expect-error
+      string().assert(42);
+    }, StructError);
+  });
 
-  it('custom error message', () => {
-    throws(() => string().assert(42, 'Not a string!'), {
-      cause: 'Expected a string, but received: 42',
-      message: 'Not a string!',
-    })
-  })
-})
+  it("custom error message", () => {
+    throws(() => string().assert(42, "Not a string!"), {
+      cause: "Expected a string, but received: 42",
+      message: "Not a string!",
+    });
+  });
+});

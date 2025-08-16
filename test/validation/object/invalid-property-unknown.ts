@@ -1,22 +1,22 @@
-import { object, string, number } from '../../../src'
+import { number, object, string } from "../../../src";
 
 export const Struct = object({
   name: string(),
   age: number(),
-})
+});
 
 export const data = {
-  name: 'john',
+  name: "john",
   age: 42,
   unknown: true,
-}
+};
 
 export const failures = [
   {
     value: true,
-    type: 'never',
+    type: "never",
     refinement: undefined,
-    path: ['unknown'],
+    path: ["unknown"],
     branch: [data, data.unknown],
   },
-]
+];

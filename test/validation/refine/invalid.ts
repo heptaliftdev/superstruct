@@ -1,16 +1,16 @@
-import isEmail from 'is-email'
-import { string, refine } from '../../../src'
+import isEmail from "is-email";
+import { refine, string } from "../../../src";
 
-export const Struct = refine(string(), 'email', isEmail)
+export const Struct = refine(string(), "email", isEmail);
 
-export const data = 'invalid'
+export const data = "invalid";
 
 export const failures = [
   {
-    value: 'invalid',
-    type: 'string',
-    refinement: 'email',
+    value: "invalid",
+    type: "string",
+    refinement: "email",
     path: [],
     branch: [data],
   },
-]
+];

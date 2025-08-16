@@ -1,23 +1,23 @@
-import { pick, object, string, number } from '../../../src'
+import { number, object, pick, string } from "../../../src";
 
 export const Struct = pick(
   object({
     name: string(),
     age: number(),
   }),
-  ['age']
-)
+  ["age"]
+);
 
 export const data = {
-  age: 'invalid',
-}
+  age: "invalid",
+};
 
 export const failures = [
   {
-    value: 'invalid',
-    type: 'number',
+    value: "invalid",
+    type: "number",
     refinement: undefined,
-    path: ['age'],
+    path: ["age"],
     branch: [data, data.age],
   },
-]
+];

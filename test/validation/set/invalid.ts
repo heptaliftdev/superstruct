@@ -1,15 +1,15 @@
-import { set, number } from '../../../src'
+import { number, set } from "../../../src";
 
-export const Struct = set(number())
+export const Struct = set(number());
 
-export const data = 'invalid'
+export const data = "invalid";
 
 export const failures = [
   {
-    value: 'invalid',
-    type: 'set',
+    value: "invalid",
+    type: "set",
     refinement: undefined,
     path: [],
     branch: [data],
   },
-]
+];

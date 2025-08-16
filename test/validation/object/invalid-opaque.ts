@@ -1,15 +1,15 @@
-import { object } from '../../../src'
+import { object } from "../../../src";
 
-export const Struct = object()
+export const Struct = object();
 
-export const data = 'invalid'
+export const data = "invalid";
 
 export const failures = [
   {
-    value: 'invalid',
-    type: 'object',
+    value: "invalid",
+    type: "object",
     refinement: undefined,
     path: [],
     branch: [data],
   },
-]
+];

@@ -1,15 +1,15 @@
-import { array, size, number } from '../../../src'
+import { array, number, size } from "../../../src";
 
-export const Struct = size(array(number()), 1, 5)
+export const Struct = size(array(number()), 1, 5);
 
-export const data = []
+export const data = [];
 
 export const failures = [
   {
     value: [],
-    type: 'array',
-    refinement: 'size',
+    type: "array",
+    refinement: "size",
     path: [],
     branch: [data],
   },
-]
+];

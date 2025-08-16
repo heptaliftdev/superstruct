@@ -1,15 +1,15 @@
-import { map } from '../../../src'
+import { map } from "../../../src";
 
-export const Struct = map()
+export const Struct = map();
 
-export const data = 'invalid'
+export const data = "invalid";
 
 export const failures = [
   {
-    value: 'invalid',
-    type: 'map',
+    value: "invalid",
+    type: "map",
     refinement: undefined,
     path: [],
     branch: [data],
   },
-]
+];

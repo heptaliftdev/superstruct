@@ -1,15 +1,15 @@
-import { date } from '../../../src'
+import { date } from "../../../src";
 
-export const Struct = date()
+export const Struct = date();
 
-export const data = 'invalid'
+export const data = "invalid";
 
 export const failures = [
   {
-    value: 'invalid',
-    type: 'date',
+    value: "invalid",
+    type: "date",
     refinement: undefined,
     path: [],
     branch: [data],
   },
-]
+];

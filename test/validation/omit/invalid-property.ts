@@ -1,23 +1,23 @@
-import { omit, object, string, number } from '../../../src'
+import { number, object, omit, string } from "../../../src";
 
 export const Struct = omit(
   object({
     name: string(),
     age: number(),
   }),
-  ['name']
-)
+  ["name"]
+);
 
 export const data = {
-  age: 'invalid',
-}
+  age: "invalid",
+};
 
 export const failures = [
   {
-    value: 'invalid',
-    type: 'number',
+    value: "invalid",
+    type: "number",
     refinement: undefined,
-    path: ['age'],
+    path: ["age"],
     branch: [data, data.age],
   },
-]
+];

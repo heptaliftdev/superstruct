@@ -1,7 +1,7 @@
-import { assert, string, trimmed } from '../../src'
-import { test } from '..'
+import { assert, string, trimmed } from "../../src";
+import { test } from "..";
 
 test<string>((x) => {
-  assert(x, trimmed(string()))
-  return x
-})
+  assert(x, trimmed(string()));
+  return x;
+});

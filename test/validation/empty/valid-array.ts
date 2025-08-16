@@ -1,7 +1,7 @@
-import { number, array, empty } from '../../../src'
+import { array, empty, number } from "../../../src";
 
-export const Struct = empty(array(number()))
+export const Struct = empty(array(number()));
 
-export const data = []
+export const data = [];
 
-export const output = []
+export const output = [];

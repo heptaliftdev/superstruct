@@ -1,17 +1,17 @@
-import { omit, object, string, number } from '../../../src'
+import { number, object, omit, string } from "../../../src";
 
 export const Struct = omit(
   object({
     name: string(),
     age: number(),
   }),
-  ['age']
-)
+  ["age"]
+);
 
 export const data = {
-  name: 'john',
-}
+  name: "john",
+};
 
 export const output = {
-  name: 'john',
-}
+  name: "john",
+};

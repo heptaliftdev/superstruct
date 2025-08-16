@@ -1,7 +1,7 @@
-import { number, set, empty } from '../../../src'
+import { empty, number, set } from "../../../src";
 
-export const Struct = empty(set(number()))
+export const Struct = empty(set(number()));
 
-export const data = new Set()
+export const data = new Set();
 
-export const output = data
+export const output = data;

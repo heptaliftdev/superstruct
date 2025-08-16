@@ -1,4 +1,4 @@
-import { type, string, number } from '../../../src'
+import { number, string, type } from "../../../src";
 
 export const Struct = type({
   id: number(),
@@ -6,18 +6,18 @@ export const Struct = type({
     name: string(),
     age: number(),
   }),
-})
+});
 
 export const data = {
   id: 1,
-}
+};
 
 export const failures = [
   {
     value: undefined,
-    type: 'type',
+    type: "type",
     refinement: undefined,
-    path: ['person'],
+    path: ["person"],
     branch: [data, undefined],
   },
-]
+];

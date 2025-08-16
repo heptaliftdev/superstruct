@@ -1,34 +1,34 @@
-import { type, union, string, number } from '../../../src'
+import { number, string, type, union } from "../../../src";
 
-const A = type({ a: string() })
-const B = type({ b: number() })
+const A = type({ a: string() });
+const B = type({ b: number() });
 
-export const Struct = union([A, B])
+export const Struct = union([A, B]);
 
 export const data = {
-  b: 'invalid',
-}
+  b: "invalid",
+};
 
 export const failures = [
   {
-    value: { b: 'invalid' },
-    type: 'union',
+    value: { b: "invalid" },
+    type: "union",
     refinement: undefined,
     path: [],
     branch: [data],
   },
   {
     value: undefined,
-    type: 'string',
+    type: "string",
     refinement: undefined,
-    path: ['a'],
+    path: ["a"],
     branch: [data, undefined],
   },
   {
-    value: 'invalid',
-    type: 'number',
+    value: "invalid",
+    type: "number",
     refinement: undefined,
-    path: ['b'],
+    path: ["b"],
     branch: [data, data.b],
   },
-]
+];

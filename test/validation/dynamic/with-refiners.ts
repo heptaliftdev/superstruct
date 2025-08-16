@@ -1,15 +1,15 @@
-import { dynamic, string, nonempty } from '../../../src'
+import { dynamic, nonempty, string } from "../../../src";
 
-export const Struct = dynamic(() => nonempty(string()))
+export const Struct = dynamic(() => nonempty(string()));
 
-export const data = ''
+export const data = "";
 
 export const failures = [
   {
     value: data,
-    type: 'string',
-    refinement: 'nonempty',
+    type: "string",
+    refinement: "nonempty",
     path: [],
     branch: [data],
   },
-]
+];

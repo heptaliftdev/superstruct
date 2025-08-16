@@ -19,29 +19,29 @@
 </p>
 
 <p align="center">
-  <a href="https://unpkg.com/superstruct/umd/superstruct.min.js">
-    <img src="https://badgen.net/bundlephobia/minzip/superstruct?color=green&label=size">
+  <a href="https://unpkg.com/@haiyami/hyperstruct/umd/hyperstruct.min.js">
+    <img src="https://badgen.net/bundlephobia/minzip/@haiyami/hyperstruct?color=green&label=size">
   </a>
   <a href="./package.json">
-    <img src="https://badgen.net/npm/v/superstruct?color=blue&label=version">
+    <img src="https://badgen.net/npm/v/@haiyami/hyperstruct?color=blue&label=version">
   </a>
 </p>
 
 <br/>
 <br/>
 
-Superstruct makes it easy to define interfaces and then validate JavaScript data against them. Its type annotation API was inspired by [Typescript](https://www.typescriptlang.org/docs/handbook/basic-types.html), [Flow](https://flow.org/en/docs/types/), [Go](https://gobyexample.com/structs), and [GraphQL](http://graphql.org/learn/schema/), giving it a familiar and easy to understand API.
+Hyperstruct makes it easy to define interfaces and then validate JavaScript data against them. Its type annotation API was inspired by [Typescript](https://www.typescriptlang.org/docs/handbook/basic-types.html), [Flow](https://flow.org/en/docs/types/), [Go](https://gobyexample.com/structs), and [GraphQL](http://graphql.org/learn/schema/), giving it a familiar and easy to understand API.
 
-But Superstruct is designed for validating data at runtime, so it throws (or returns) detailed runtime errors for you or your end users. This is especially useful in situations like accepting arbitrary input in a REST or GraphQL API. But it can even be used to validate internal data structures at runtime when needed.
+But Hyperstruct is designed for validating data at runtime, so it throws (or returns) detailed runtime errors for you or your end users. This is especially useful in situations like accepting arbitrary input in a REST or GraphQL API. But it can even be used to validate internal data structures at runtime when needed.
 
 <br/>
 
 ### Usage
 
-Superstruct allows you to define the shape of data you want to validate:
+Hyperstruct allows you to define the shape of data you want to validate:
 
 ```js
-import { assert, object, number, string, array } from 'superstruct'
+import { assert, object, number, string, array } from '@haiyami/hyperstruct'
 
 const Article = object({
   id: number(),
@@ -66,10 +66,10 @@ assert(data, Article)
 // If you'd rather not throw, you can use `is()` or `validate()`.
 ```
 
-Superstruct ships with validators for all the common JavaScript data types, and you can define custom ones too:
+Hyperstruct ships with validators for all the common JavaScript data types, and you can define custom ones too:
 
 ```js
-import { is, define, object, string } from 'superstruct'
+import { is, define, object, string } from '@haiyami/hyperstruct'
 import isUuid from 'is-uuid'
 import isEmail from 'is-email'
 
@@ -93,10 +93,10 @@ if (is(data, User)) {
 }
 ```
 
-Superstruct can also handle coercion of your data before validating it, for example to mix in default values:
+Hyperstruct can also handle coercion of your data before validating it, for example to mix in default values:
 
 ```ts
-import { create, object, number, string, defaulted } from 'superstruct'
+import { create, object, number, string, defaulted } from '@haiyami/hyperstruct'
 
 let i = 0
 
@@ -117,10 +117,10 @@ const user = create(data, User)
 // }
 ```
 
-And if you use TypeScript, Superstruct automatically ensures that your data has proper typings whenever you validate it:
+And if you use TypeScript, Hyperstruct automatically ensures that your data has proper typings whenever you validate it:
 
 ```ts
-import { is, object, number, string } from 'superstruct'
+import { is, object, number, string } from '@haiyami/hyperstruct'
 
 const User = object({
   id: number(),
@@ -135,7 +135,7 @@ if (is(data, User)) {
 }
 ```
 
-Superstruct supports more complex use cases too like defining arrays or nested objects, composing structs inside each other, returning errors instead of throwing them, and more! For more information read the full [Documentation](#documentation).
+Hyperstruct supports more complex use cases too like defining arrays or nested objects, composing structs inside each other, returning errors instead of throwing them, and more! For more information read the full [Documentation](#documentation).
 
 <br/>
 
@@ -155,73 +155,75 @@ There are lots of existing validation libraries—[`joi`](https://github.com/hap
 
 - **They use JSON Schema.** Don't get me wrong, JSON Schema _can_ be useful. But it's kind of like HATEOAS—it's usually way more complexity than you need and you aren't using any of its benefits. (Sorry, I said it.)
 
-Of course, not every validation library suffers from all of these issues, but most of them exhibit at least one. If you've run into this problem before, you might like Superstruct.
+Of course, not every validation library suffers from all of these issues, but most of them exhibit at least one. If you've run into this problem before, you might like Hyperstruct.
 
-Which brings me to how Superstruct solves these issues...
+Which brings me to how Hyperstruct solves these issues...
 
 <br/>
 
 ### Principles
 
-1. **Customizable types.** Superstruct's power is in making it easy to define an entire set of custom data types that are specific to your application, and defined in a _single_ place, so you have full control over your requirements.
+1. **Customizable types.** Hyperstruct's power is in making it easy to define an entire set of custom data types that are specific to your application, and defined in a _single_ place, so you have full control over your requirements.
 
-2. **Unopinionated defaults.** Superstruct ships with native JavaScript types, and everything else is customizable, so you never have to fight to override decisions made by "core" that differ from your application's needs.
+2. **Unopinionated defaults.** Hyperstruct ships with native JavaScript types, and everything else is customizable, so you never have to fight to override decisions made by "core" that differ from your application's needs.
 
-3. **Composable interfaces.** Superstruct interfaces are composable, so you can break down commonly-repeated pieces of data into components, and compose them to build up the more complex objects.
+3. **Composable interfaces.** Hyperstruct interfaces are composable, so you can break down commonly-repeated pieces of data into components, and compose them to build up the more complex objects.
 
-4. **Useful errors.** The errors that Superstruct throws contain all the information you need to convert them into your own application-specific errors easy, which means more helpful errors for your end users!
+4. **Useful errors.** The errors that Hyperstruct throws contain all the information you need to convert them into your own application-specific errors easy, which means more helpful errors for your end users!
 
-5. **Familiar API.** The Superstruct API was heavily inspired by [Typescript](https://www.typescriptlang.org/docs/handbook/basic-types.html), [Flow](https://flow.org/en/docs/types/), [Go](https://gobyexample.com/structs), and [GraphQL](http://graphql.org/learn/schema/). If you're familiar with any of those, then its schema definition API will feel very natural to use, so you can get started quickly.
+5. **Familiar API.** The Hyperstruct API was heavily inspired by [Typescript](https://www.typescriptlang.org/docs/handbook/basic-types.html), [Flow](https://flow.org/en/docs/types/), [Go](https://gobyexample.com/structs), and [GraphQL](http://graphql.org/learn/schema/). If you're familiar with any of those, then its schema definition API will feel very natural to use, so you can get started quickly.
 
 <br/>
 
 ### Demo
 
-Try out the [live demo on CodeSandbox](https://codesandbox.io/s/bold-water-s2cr8d?file=/index.js) to get an idea for how the API works, or to quickly verify your use case:
+Check out the examples in the `./examples/` directory to get an idea for how the API works:
 
-[![Demo screenshot.](./docs/images/demo-screenshot.png)](https://codesandbox.io/s/bold-water-s2cr8d?file=/index.js)
+![Demo screenshot.](./docs/images/demo-screenshot.png)
 
 <br/>
 
 ### Examples
 
-Superstruct's API is very flexible, allowing it to be used for a variety of use cases on your servers and in the browser. Here are a few examples of common patterns...
+Hyperstruct's API is very flexible, allowing it to be used for a variety of use cases on your servers and in the browser. Here are a few examples of common patterns...
 
-- [Basic Validation](./examples/basic-validation.js)
-- [Custom Types](./examples/custom-types.js)
-- [Default Values](./examples/default-values.js)
-- [Optional Values](./examples/optional-values.js)
-- [Composing Structs](./examples/composing-structs.js)
-- [Throwing Errors](./examples/throwing-errors.js)
-- [Returning Errors](./examples/returning-errors.js)
-- [Testing Values](./examples/testing-values.js)
-- [Custom Errors](./examples/custom-errors.js)
+- [Basic Validation](./examples/basic-validation.ts)
+- [Custom Types](./examples/custom-types.ts)
+- [Default Values](./examples/default-values.ts)
+- [Optional Values](./examples/optional-values.ts)
+- [Composing Structs](./examples/composing-structs.ts)
+- [Throwing Errors](./examples/throwing-errors.ts)
+- [Returning Errors](./examples/returning-errors.ts)
+- [Testing Values](./examples/testing-values.ts)
+- [Custom Errors](./examples/custom-errors.ts)
 
 <br/>
 
 ### Documentation
 
-Read the getting started guide to familiarize yourself with how Superstruct works. After that, check out the full API reference for more detailed information about structs, types and errors...
+Read the getting started guide to familiarize yourself with how Hyperstruct works. After that, check out the full API reference for more detailed information about structs, types and errors...
 
-- [**Guide**](https://docs.superstructjs.org/guides/01-getting-started)
-  - [Getting Started](https://docs.superstructjs.org/guides/01-getting-started)
-  - [Validating Data](https://docs.superstructjs.org/guides/02-validating-data)
-  - [Coercing Data](https://docs.superstructjs.org/guides/03-coercing-data)
-  - [Refining Validation](https://docs.superstructjs.org/guides/04-refining-validation)
-  - [Handling Errors](https://docs.superstructjs.org/guides/05-handling-errors)
-  - [Using TypeScript](https://docs.superstructjs.org/guides/06-using-typescript)
-- [**Reference**](https://docs.superstructjs.org/api-reference/core)
-  - [Core](https://docs.superstructjs.org/api-reference/core)
-  - [Types](https://docs.superstructjs.org/api-reference/types)
-  - [Refinements](https://docs.superstructjs.org/api-reference/refinements)
-  - [Coercions](https://docs.superstructjs.org/api-reference/coercions)
-  - [Utilities](https://docs.superstructjs.org/api-reference/utilities)
-  - [Errors](https://docs.superstructjs.org/api-reference/errors)
-  - [TypeScript](https://docs.superstructjs.org/api-reference/typescript)
-- [**FAQ**](https://docs.superstructjs.org/resources/faq)
-- [**Resources**](https://docs.superstructjs.org/resources/links)
+Documentation is available in the included guides:
 
-[![Docs screenshot.](./docs/images/docs-screenshot.png)](https://docs.superstructjs.org)
+- [Getting Started](./docs/guides/01-getting-started.md)
+- [Validating Data](./docs/guides/02-validating-data.md)
+- [Coercing Data](./docs/guides/03-coercing-data.md)
+- [Refining Validation](./docs/guides/04-refining-validation.md)
+- [Handling Errors](./docs/guides/05-handling-errors.md)
+- [Using TypeScript](./docs/guides/06-using-typescript.md)
+
+API Reference:
+- [Core](./docs/reference/core.md)
+- [Types](./docs/reference/types.md)
+- [Refinements](./docs/reference/refinements.md)
+- [Coercions](./docs/reference/coercions.md)
+- [Utilities](./docs/reference/utilities.md)
+- [Errors](./docs/reference/errors.md)
+- [TypeScript](./docs/reference/typescript.md)
+
+Resources:
+- [FAQ](./docs/resources/faq.md)
+- [Links](./docs/resources/links.md)
 
 <br/>
 
