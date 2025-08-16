@@ -179,7 +179,7 @@
     "dot-prop": "^6.0.1",
     "duplexer3": "^0.1.5",
     "electron-to-chromium": "^1.4.496",
-    "elegant-spinner": "^1.0.1",
+    "elegant-spinner": "^3.0.0",
     "emoji-regex": "^8.0.0",
     "end-of-stream": "^1.4.4",
     "enquirer": "^2.4.1",
