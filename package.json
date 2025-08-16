@@ -216,7 +216,7 @@
     "file-entry-cache": "^6.0.1",
     "fill-range": "^7.0.1",
     "find-cache-dir": "^2.1.0",
-    "find-up": "^4.1.0",
+    "find-up": "^7.0.0",
     "flat": "^5.0.2",
     "flat-cache": "^3.0.4",
     "flatted": "^3.2.7",
